@@ -10,7 +10,8 @@ typedef struct {
 } P;
 
 P ans[10000000];
-
+inline int max(int a, int b) { return a > b ? a : b; }
+inline int min(int a, int b) { return a > b ? b : a; }
 inline long double f(double x, double y) {
 	return (long double)sin(x)* exp((1 - cos(y))*(1 - cos(y)))
 		+ cos(y) * exp((1 - sin(x))*(1 - sin(x)))
