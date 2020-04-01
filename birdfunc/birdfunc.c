@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <algorithm>
-using namespace std;
 const long double eps = 1e-10;
 inline double PI() { return 2.0 * acos(0); }
 double s = 1e-2;
@@ -35,7 +33,6 @@ void bisection_x(double x, double yl, double yr) {
 	while (yr - yl > eps) {
 		mid = (yl + yr) / 2.0;
 		if (fabs(f(x, mid)) < eps) {
-			//printf("%d. f(%lf, %lf) = %lf\n", cnt++, x, mid, f(x, mid));
 			cnt++;
 			ans[ansidx].x = x, ans[ansidx++].y = mid;
 			return;
@@ -43,8 +40,7 @@ void bisection_x(double x, double yl, double yr) {
 		else if (f(x, mid) * f(x, yl) < 0) yr = mid;
 		else if (f(x, mid) * f(x, yr) < 0) yl = mid;
 		else return;
-		ans[ansidx++] = { x, mid };
-		//printf("%d. f(%lf, %lf) = %lf\n", cnt++, x, mid, f(x, mid));
+		ans[ansidx].x = x, ans[ansidx++].y = mid;
 	}
 }
 
@@ -54,7 +50,6 @@ void bisection_y(double y, double xl, double xr) {
 	while (xr - xl > eps) {
 		mid = (xl + xr) / 2.0;
 		if (fabs(f(mid, y)) < eps) {
-			//printf("%d. f(%lf, %lf) = %lf\n", cnt++, mid, y, f(mid, y));
 			cnt++;
 			ans[ansidx].x = mid, ans[ansidx++].y = y;
 			return;
@@ -62,8 +57,7 @@ void bisection_y(double y, double xl, double xr) {
 		else if (f(mid, y) * f(xl, y) < 0) xr = mid;
 		else if (f(mid, y) * f(xr, y) < 0) xl = mid;
 		else return;
-		ans[ansidx++] = { mid, y };
-		//printf("%d. f(%lf, %lf) = %lf\n", cnt++, mid, y, f(mid, y));
+		ans[ansidx].x = mid, ans[ansidx++].y = y;
 	}
 }
 
@@ -96,10 +90,6 @@ int main() {
 	root_find();
 	puts("\n\n");
 	printf("max iter : %d, min iter : %d\n", mx, mn);
-	//puts("\n\n\n\n");
-	//for (int i = 0; i < ansidx; i++)
-	//   //if(fabs(f(ans[i].x, ans[i].y)) < eps)
-	//      printf("%d. f(%.10lf, %.10lf) = %.15lf\n", i+1, ans[i].x, ans[i].y, f(ans[i].x, ans[i].y));
 
 	return 0;
 }
