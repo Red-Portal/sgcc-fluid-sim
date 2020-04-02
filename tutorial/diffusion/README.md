@@ -3,10 +3,13 @@ The goal of this homework "slash" tutorial is to implement the 1D heat diffusion
 
 ## Heat diffusion equation
 The heat diffusion equation is given by the following equation.
+
 <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial u}{\partial t} = \alpha \nabla^2 u">
 
 For the 1-dimensional special case, the equation is simplified as below.
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\round u}{\round t} = \alpha \frac{\round^2 u}{\round x^2}">
+
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}">
+
 where `t` denotes the time step, `x` is the position in the domain.
 `u(x, t)` is the function denoting the heat at position `x` and time point `t`.
 
